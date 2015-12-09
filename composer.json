@@ -7,6 +7,7 @@
     "illuminate",
     "objective php"
   ],
+  "minimum-stability": "dev",
   "homepage": "https://github.com/objective-php/eloquent-package",
   "license": "GPL-3.0",
   "authors": [
@@ -18,8 +19,8 @@
   ],
   "require": {
     "php": ">=7.0",
-    "objective-php/components": "dev-master",
     "objective-php/services-factory": "dev-master",
+    "objective-php/components": "dev-master",
     "illuminate/database": "5.*"
   },
   "require-dev": {
