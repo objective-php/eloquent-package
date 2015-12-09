@@ -1,0 +1,33 @@
+{
+  "name": "objective-php/eloquent-package",
+  "description": "Eloquent ORM integration from Laravel for Objective PHP",
+  "type": "library",
+  "keywords": [
+    "eloquent",
+    "illuminate",
+    "objective php"
+  ],
+  "homepage": "https://github.com/objective-php/eloquent-package",
+  "license": "GPL-3.0",
+  "authors": [
+    {
+      "name": "Gauthier 'Rusty' Delamarre",
+      "email": "gauthier@objective-php.org",
+      "role": "lead"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "objective-php/components": "dev-master",
+    "objective-php/services-factory": "dev-master",
+    "illuminate/database": "5.*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "5.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "ObjectivePHP\\EloquentPackage\\": "src/"
+    }
+  }
+}
