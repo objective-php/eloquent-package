@@ -19,7 +19,7 @@
          */
         public function __invoke(ApplicationInterface $app)
         {
-            $app->on('bootstrap')->plug([$this, 'bootstrapEloquent']);
+            $app->getStep('bootstrap')->plug([$this, 'bootstrapEloquent']);
         }
 
         /**
