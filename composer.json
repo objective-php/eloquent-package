@@ -28,7 +28,7 @@
   },
   "autoload": {
     "psr-4": {
-      "ObjectivePHP\\EloquentPackage\\": "src/"
+      "ObjectivePHP\\Package\\Eloquent\\": "src/"
     }
   }
 }
