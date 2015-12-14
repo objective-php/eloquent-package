@@ -1,6 +1,6 @@
 <?php
 
-    namespace ObjectivePHP\EloquentPackage;
+    namespace ObjectivePHP\Package\Eloquent;
 
 
     use ObjectivePHP\Application\ApplicationInterface;
@@ -9,7 +9,7 @@
     /**
      * Class EloquentPackage
      *
-     * @package ObjectivePHP\EloquentPackage
+     * @package ObjectivePHP\Package\Eloquent
      */
     class EloquentPackage
     {
@@ -40,7 +40,7 @@
                 // eloquent has not been configured
                 return null;
             }
-            
+
             $capsuleManager = new CapsuleManager();
 
             $capsuleManager->addConnection($config);
