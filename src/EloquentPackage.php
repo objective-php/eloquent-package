@@ -5,6 +5,7 @@
 
     use ObjectivePHP\Application\ApplicationInterface;
     use Illuminate\Database\Capsule\Manager as CapsuleManager;
+    use ObjectivePHP\Package\Eloquent\Config\EloquentCapsule;
 
     /**
      * Class EloquentPackage
@@ -29,13 +30,9 @@
          */
         public function bootstrapEloquent(ApplicationInterface $app)
         {
-            $config = $app->getConfig()->eloquent->toArray();
+            $capsules = $app->getConfig()->subset(EloquentCapsule::PREFIX);
 
-            // add default values
-            $config += ['charset' => 'utf8', 'collation' => 'utf8_unicode_ci'];
-
-
-            if (!$config)
+            if (!$capsules)
             {
                 // eloquent has not been configured
                 return null;
@@ -43,13 +40,22 @@
 
             $capsuleManager = new CapsuleManager();
 
-            $capsuleManager->addConnection($config);
+            // loop over declared capsules
+            foreach($capsules as $id => $capsule)
+            {
+                // add default values
+                $capsule += ['charset' => 'utf8', 'collation' => 'utf8_unicode_ci'];
 
-            $capsuleManager->setAsGlobal();
-            $capsuleManager->bootEloquent();
+                $capsuleManager->addConnection($capsule, $id);
+
+            }
 
             // register the capsule manager as service
-            $app->getServicesFactory()->registerService(['id' => 'eloquent.capsule', 'instance' => $capsuleManager]);
+            $app->getServicesFactory()
+                ->registerService(['id' => 'eloquent.capsule', 'instance' => $capsuleManager])
+            ;
+            $capsuleManager->setAsGlobal();
+            $capsuleManager->bootEloquent();
 
         }
 
