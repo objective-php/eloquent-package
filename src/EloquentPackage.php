@@ -30,7 +30,7 @@
          */
         public function bootstrapEloquent(ApplicationInterface $app)
         {
-            $capsules = $app->getConfig()->subset(EloquentCapsule::PREFIX);
+            $capsules = $app->getConfig()->subset(EloquentCapsule::class);
 
             if (!$capsules)
             {
